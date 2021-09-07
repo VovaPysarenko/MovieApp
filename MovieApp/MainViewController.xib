@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="filmCollectionView" destination="pZY-EL-Y7o" id="q9d-1D-9a0"/>
+                <outlet property="genreCollectionView" destination="vk4-E2-ar9" id="a4b-El-PTc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rd-n5-hnj">
+                    <rect key="frame" x="24" y="34" width="366" height="862"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vk4-E2-ar9" customClass="FilterCollectionView" customModule="MovieApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="3pR-wC-XQP"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6kB-aG-Ofa">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pZY-EL-Y7o" customClass="FilmCollectionView" customModule="MovieApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="366" height="812"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DKE-nr-vJh">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="vk4-E2-ar9" firstAttribute="top" secondItem="8rd-n5-hnj" secondAttribute="top" id="JVc-U8-ut8"/>
+                        <constraint firstAttribute="trailing" secondItem="pZY-EL-Y7o" secondAttribute="trailing" id="Upb-N0-hJm"/>
+                        <constraint firstItem="vk4-E2-ar9" firstAttribute="leading" secondItem="8rd-n5-hnj" secondAttribute="leading" id="akf-Pv-Yh7"/>
+                        <constraint firstItem="pZY-EL-Y7o" firstAttribute="top" secondItem="vk4-E2-ar9" secondAttribute="bottom" id="iBb-IR-yzJ"/>
+                        <constraint firstAttribute="bottom" secondItem="pZY-EL-Y7o" secondAttribute="bottom" id="mCD-9P-FPu"/>
+                        <constraint firstItem="pZY-EL-Y7o" firstAttribute="leading" secondItem="8rd-n5-hnj" secondAttribute="leading" id="swG-Lq-39j"/>
+                        <constraint firstAttribute="trailing" secondItem="vk4-E2-ar9" secondAttribute="trailing" id="yZ5-oQ-qTi"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8rd-n5-hnj" secondAttribute="bottom" id="Ety-2I-cAv"/>
+                <constraint firstItem="8rd-n5-hnj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="Xrq-xf-ACT"/>
+                <constraint firstItem="8rd-n5-hnj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="34" id="nec-0c-Z4G"/>
+                <constraint firstAttribute="trailing" secondItem="8rd-n5-hnj" secondAttribute="trailing" constant="24" id="tIq-el-ZZh"/>
+            </constraints>
+            <point key="canvasLocation" x="20" y="90"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
