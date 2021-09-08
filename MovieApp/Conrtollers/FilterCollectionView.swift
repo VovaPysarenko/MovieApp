@@ -15,7 +15,7 @@ class FilterCollectionView: UICollectionView {
 extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 50, height: UIScreen.main.bounds.height - 100)
+        return CGSize(width: 200, height: 30)
         
     }
     
@@ -25,10 +25,11 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCellCollectionViewCell", for: indexPath) as? CustomCellCollectionViewCell {
-            cell.backgroundColor = .gray
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionCell", for: indexPath) as? FilterCollectionCell {
+            cell.backgroundColor = .blue
+            cell.layer.cornerRadius = 10
             let film = films[indexPath.row]
-            cell.descriptionLabel.text = "vcvcv"
+            cell.filterLabel.text = "bbb"
             return cell
         }
         return UICollectionViewCell()
