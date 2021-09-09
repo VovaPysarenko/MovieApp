@@ -9,7 +9,7 @@ import UIKit
 
 class FilterCollectionView: UICollectionView {
     
-    var films = [1,1,1,1,1,1,1]
+    var films: [Film] = []
     
 }
 extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -29,7 +29,7 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
             cell.backgroundColor = .blue
             cell.layer.cornerRadius = 10
             let film = films[indexPath.row]
-            cell.filterLabel.text = "bbb"
+            
             return cell
         }
         return UICollectionViewCell()

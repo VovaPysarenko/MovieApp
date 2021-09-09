@@ -11,6 +11,7 @@ class CustomCellCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +20,6 @@ class CustomCellCollectionViewCell: UICollectionViewCell {
         
         
     }
+    
 
 }

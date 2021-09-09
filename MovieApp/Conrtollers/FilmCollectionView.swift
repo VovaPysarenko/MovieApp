@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FilmCollectionView: UICollectionView  {
-    var films = [1,1,1,1,1,1,1]
+    var films: [Film] = []
+
     
 }
 
@@ -28,7 +30,11 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCellCollectionViewCell", for: indexPath) as? CustomCellCollectionViewCell {
             cell.backgroundColor = .gray
             let film = films[indexPath.row]
-            cell.descriptionLabel.text = "vcvcv"
+            cell.descriptionLabel.text = film.title
+            cell.textView.text = film.overview
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
+            cell.img.kf.setImage(with: url)
+            
             return cell
         }
    return UICollectionViewCell()

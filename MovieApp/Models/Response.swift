@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Response: Codable {
     var results: [Film]
