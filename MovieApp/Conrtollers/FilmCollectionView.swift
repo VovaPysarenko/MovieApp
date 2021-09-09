@@ -10,8 +10,7 @@ import Kingfisher
 
 class FilmCollectionView: UICollectionView  {
     var films: [Film] = []
-
-    
+    var tapCallback: ((Film) -> Void)?
 }
 
 extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -34,7 +33,9 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
             cell.textView.text = film.overview
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
             cell.img.kf.setImage(with: url)
-            
+            cell.tapCall = {
+                self.tapCallback?(film)
+            }
             return cell
         }
    return UICollectionViewCell()

@@ -12,14 +12,16 @@ class CustomCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    var tapCall: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tap)
     }
     
-
+    @objc func tapped() {
+        tapCall?()
+    }
 }

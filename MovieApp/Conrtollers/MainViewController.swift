@@ -52,6 +52,23 @@ class MainViewController: UIViewController {
             }
         }.resume()
        
+        filmCollectionView.tapCallback = { currentFilm in
+            self.navigationController?.pushViewController(SinglePageViewController(/* film  */), animated: true)
+        }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    @IBAction func tapFunction(sender: UITapGestureRecognizer) {
+            print("tap working")
+        }
+
     
 }
