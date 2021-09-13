@@ -11,6 +11,7 @@ import Kingfisher
 class FilmCollectionView: UICollectionView  {
     var films: [Film] = []
     var tapCallback: ((Film) -> Void)?
+    weak var filmDelegate: FilmManagerProtocol?
 }
 
 extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -33,11 +34,29 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
             cell.textView.text = film.overview
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
             cell.img.kf.setImage(with: url)
+            
             cell.tapCall = {
                 self.tapCallback?(film)
+            }
+            
+            cell.addFilmTapped = {
+                self.filmDelegate?.addFilm(addedFilm: film)
+            }
+            cell.deleteFilmTapped = {
+                self.filmDelegate?.deleteFilm(deletedFilm: film)
+                self.films.remove(at: indexPath.row)
+                self.reloadData()
+                
+                
             }
             return cell
         }
    return UICollectionViewCell()
     }
+}
+
+
+protocol FilmManagerProtocol: AnyObject {
+    func addFilm(addedFilm: Film)
+    func deleteFilm(deletedFilm: Film)
 }

@@ -13,12 +13,22 @@ class CustomCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     var tapCall: (() -> Void)?
+    var addFilmTapped: (() -> Void)?
+    var deleteFilmTapped: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tap)
+    }
+    
+    @IBAction func addFilmAction(_ sender: Any) {
+        addFilmTapped?()
+    }
+    
+    @IBAction func deleteFilm(_ sender: Any) {
+        deleteFilmTapped?()
     }
     
     @objc func tapped() {

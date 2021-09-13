@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class MainViewController: UIViewController {
     
@@ -19,13 +18,31 @@ class MainViewController: UIViewController {
         filmCollectionView.dataSource = filmCollectionView
         filterCollectionView.delegate =  filterCollectionView
         filterCollectionView.dataSource = filterCollectionView
+        filmCollectionView.filmDelegate = self
+        setupLayout()
+        registerCell()
+        getJSON()
         
+        filmCollectionView.tapCallback = { [weak self] currentFilm in
+            self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
+            }
+    }
+
+    func setupLayout() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.title = "Movies"
+    }
+    
+    func registerCell() {
         let connectedFilmNIB = UINib(nibName: "CustomCellCollectionViewCell", bundle: nil)
         filmCollectionView.register(connectedFilmNIB, forCellWithReuseIdentifier: "CustomCellCollectionViewCell")
 
         let connectedFilterNIB = UINib(nibName: "FilterCollectionCell", bundle: nil)
         filterCollectionView.register(connectedFilterNIB, forCellWithReuseIdentifier: "FilterCollectionCell")
-        
+    }
+    
+    func getJSON() {
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=42ebca47d17dba363b4bf75d08a1a301"
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -51,24 +68,15 @@ class MainViewController: UIViewController {
                 }
             }
         }.resume()
-       
-        filmCollectionView.tapCallback = { currentFilm in
-            self.navigationController?.pushViewController(SinglePageViewController(/* film  */), animated: true)
-        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
-    @IBAction func tapFunction(sender: UITapGestureRecognizer) {
-            print("tap working")
-        }
+}
 
-    
+extension MainViewController: FilmManagerProtocol {
+    func addFilm(addedFilm: Film) {
+        print("addedFilmaddedFilm \(addedFilm)")
+    }
+    func deleteFilm(deletedFilm: Film) {
+        print("fastPrint \(deletedFilm)")
+    }
 }

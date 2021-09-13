@@ -40,18 +40,42 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZT-WP-fMl">
+                        <rect key="frame" x="232" y="20" width="169" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="AE0-HM-zbD"/>
+                        </constraints>
+                        <state key="normal" title="Add film to my collection"/>
+                        <connections>
+                            <action selector="addFilmAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="KBb-lR-aBT"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyl-ve-FdK">
+                        <rect key="frame" x="20" y="20" width="74" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="MAh-6i-5cl"/>
+                        </constraints>
+                        <state key="normal" title="Delete film"/>
+                        <connections>
+                            <action selector="deleteFilm:" destination="gTV-IL-0wX" eventType="touchUpInside" id="V6U-Mk-gPM"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="yfT-Bj-RNh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="21T-C5-fdN"/>
                 <constraint firstItem="yfT-Bj-RNh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Gv-vd-Z3T"/>
+                <constraint firstItem="Jyl-ve-FdK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="9OV-ph-Lmw"/>
                 <constraint firstAttribute="trailing" secondItem="WGr-QK-NyA" secondAttribute="trailing" id="Cfh-MD-7Hx"/>
+                <constraint firstAttribute="trailing" secondItem="BZT-WP-fMl" secondAttribute="trailing" constant="20" id="FGo-ho-FNs"/>
                 <constraint firstAttribute="trailing" secondItem="yfT-Bj-RNh" secondAttribute="trailing" id="Kak-hB-Z4f"/>
+                <constraint firstItem="Jyl-ve-FdK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="O6g-cf-Otk"/>
                 <constraint firstAttribute="bottom" secondItem="WGr-QK-NyA" secondAttribute="bottom" id="T9M-wF-tsD"/>
                 <constraint firstItem="WGr-QK-NyA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cAD-Tm-bha"/>
                 <constraint firstItem="2rt-5x-dOZ" firstAttribute="top" secondItem="yfT-Bj-RNh" secondAttribute="bottom" constant="5" id="juh-uX-6X2"/>
                 <constraint firstItem="2rt-5x-dOZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="mFX-9i-0uz"/>
+                <constraint firstItem="BZT-WP-fMl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="pJ1-0O-SCU"/>
                 <constraint firstItem="WGr-QK-NyA" firstAttribute="top" secondItem="2rt-5x-dOZ" secondAttribute="bottom" constant="5" id="tD2-c7-opV"/>
                 <constraint firstAttribute="trailing" secondItem="2rt-5x-dOZ" secondAttribute="trailing" constant="16" id="ts3-Iz-7Fn"/>
             </constraints>
