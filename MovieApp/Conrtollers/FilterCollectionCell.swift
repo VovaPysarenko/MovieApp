@@ -9,13 +9,26 @@ import UIKit
 
 class FilterCollectionCell: UICollectionViewCell {
     
+    var tapCall: (() -> Void)?
+    var filterFilmTapped: (() -> Void)?
+
+
+    
     
     @IBOutlet weak var filterLabel: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tap)
+    }
+    
+    
+    @objc func tapped() {
+        tapCall?()
     }
 
 }
+

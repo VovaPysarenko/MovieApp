@@ -126,9 +126,9 @@
 				80C841F526E6580F00A71674 /* MainViewController.swift */,
 				80C8420526E79FC900A71674 /* FilmCollectionView.swift */,
 				80C8420126E75DCA00A71674 /* CustomCellCollectionViewCell.swift */,
-				80C8421526EA301500A71674 /* SinglePageViewController.swift */,
 				80C8420726E7AB2B00A71674 /* FilterCollectionView.swift */,
 				80C8420926E7AF4E00A71674 /* FilterCollectionCell.swift */,
+				80C8421526EA301500A71674 /* SinglePageViewController.swift */,
 			);
 			path = Conrtollers;
 			sourceTree = "<group>";

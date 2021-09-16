@@ -23,7 +23,9 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("fastPrintfilms \(films)")
         return films.count
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,8 +48,6 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
                 self.filmDelegate?.deleteFilm(deletedFilm: film)
                 self.films.remove(at: indexPath.row)
                 self.reloadData()
-                
-                
             }
             return cell
         }
@@ -60,3 +60,19 @@ protocol FilmManagerProtocol: AnyObject {
     func addFilm(addedFilm: Film)
     func deleteFilm(deletedFilm: Film)
 }
+
+//extension Genre {
+//    var toJSONDict : [NSObject:AnyObject] {
+//        return ["id":id, "name":name]
+//    }
+//}
+
+//func getFilmsByGenre(gener2: Generes) {
+//    let genry1: Generes
+//    switch genry1 {
+//
+//    case .Action:
+//        let d =
+//    case .Adventure:
+//    }
+//}

@@ -12,6 +12,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var filmCollectionView: FilmCollectionView!
     @IBOutlet weak var filterCollectionView: FilterCollectionView!
     
+    var sortedGeneres: [Genre]  = [] //пустой масив
+    
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         filmCollectionView.delegate =  filmCollectionView
@@ -21,7 +26,8 @@ class MainViewController: UIViewController {
         filmCollectionView.filmDelegate = self
         setupLayout()
         registerCell()
-        getJSON()
+        getJSONFilms()
+        getJSONGenere()
         
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
@@ -29,7 +35,7 @@ class MainViewController: UIViewController {
     }
 
     func setupLayout() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
+//        navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.title = "Movies"
     }
@@ -42,7 +48,7 @@ class MainViewController: UIViewController {
         filterCollectionView.register(connectedFilterNIB, forCellWithReuseIdentifier: "FilterCollectionCell")
     }
     
-    func getJSON() {
+    func getJSONFilms() {
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=42ebca47d17dba363b4bf75d08a1a301"
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -53,22 +59,57 @@ class MainViewController: UIViewController {
                 }
                 guard let data = data else {return}
          
-                print("responseresponse")
+//                print("responseresponse")
                 let someString = String(data: data, encoding: .utf8)
                 
+  
                 if let filmResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     self.filmCollectionView.films = filmResponse.results
                     self.filmCollectionView.reloadData()
-                    self.filterCollectionView.films = filmResponse.results
+                                        
+//                    self.filterCollectionView.films = filmResponse.results
+//                    self.filterCollectionView.reloadData()
+
+                } else {
+                    print("FAILED")
+                }
+       
+            }
+        }.resume()
+    }
+    
+    func getJSONGenere() {
+        let urlString = "https://api.themoviedb.org/3/genre/movie/list?api_key=42ebca47d17dba363b4bf75d08a1a301"
+        guard let url = URL(string: urlString) else {return}
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                if let  error = error {
+                    print(error)
+                    return
+                }
+                guard let data = data else {return}
+         
+//                print("responseresponse")
+//                let genereJSON = String(data: data, encoding: .utf8)
+//                print(genereJSON ?? "")
+                
+                
+                if let filterResponse = try? JSONDecoder().decode(ResponseGenre.self, from: data) {
+                    self.filterCollectionView.generes = filterResponse.genres
                     self.filterCollectionView.reloadData()
+                
+//                    print("fastPrint \(filterResponse)")
                     
                   
                 } else {
                     print("FAILED")
                 }
+                
             }
         }.resume()
     }
+    
+    
     
 }
 
@@ -79,4 +120,13 @@ extension MainViewController: FilmManagerProtocol {
     func deleteFilm(deletedFilm: Film) {
         print("fastPrint \(deletedFilm)")
     }
+    
 }
+extension MainViewController  {
+    enum Genres: Int {
+        case Action = 28
+    }
+
+}
+
+

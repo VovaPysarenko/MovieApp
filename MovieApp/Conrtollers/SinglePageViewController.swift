@@ -13,9 +13,8 @@ class SinglePageViewController: UIViewController {
     @IBOutlet weak var singleImg: UIImageView!
     @IBOutlet weak var singlDescriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-    var film: Film
-
     
+    var film: Film
     init(film: Film) {
         self.film = film
         super.init(nibName: nil, bundle: nil)

@@ -9,7 +9,12 @@ import UIKit
 
 class FilterCollectionView: UICollectionView {
     
-    var films: [Film] = []
+    
+    var generes: [Genre] = []
+    var tapCallback: ((Genre) -> Void)?
+    weak var fiterDelegate: FilterManagerProtocol?
+    
+
     
 }
 extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -21,17 +26,43 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return films.count
+        print("fastPrint \(generes)")
+        return generes.count
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionCell", for: indexPath) as? FilterCollectionCell {
             cell.backgroundColor = .blue
             cell.layer.cornerRadius = 10
-            let film = films[indexPath.row]
+            let genre = generes[indexPath.row]
+//            print("fastPrint \(genre)")
+            cell.filterLabel.text = genre.name
+            
+            cell.tapCall = {
+                self.tapCallback?(genre)
+            }
+            
+            cell.filterFilmTapped = {
+                self.fiterDelegate?.filterFilm(filteredFilm: genre.name)
+                self.reloadData()
+               
+            }
+            
+            
+            enum Genres: Int {
+                case Action = 28
+                //        case Adventure = "Adventure"
+            }
+
             
             return cell
         }
         return UICollectionViewCell()
     }
+    
+
+}
+protocol FilterManagerProtocol: AnyObject {
+    func filterFilm(filteredFilm: String)
 }
