@@ -35,22 +35,13 @@ class MainViewController: UIViewController {
         filterCollectionView.tapCallback = { currentGenre in
             var sortedFilm = [Film]()
             for currentFilm in self.filmCollectionView.films {
-//                print("fastPrintfilmItemfilmItemfilmItemfilmItemfilmItemfilmItem \(filmItem)")
-                for genreItem in self.filterCollectionView.generes {
-                    print("FilmGenres \(currentFilm.genreIds)")
-                    if currentFilm.genreIds == [currentGenre.id] {
-                    sortedFilm.append(currentFilm)
-//                    print("fastPrint \(currentGenre)")
-//                    if currentFilm.genreIds.contains(genreItem.id) {
-//                        sortedFilm.append(currentFilm)
-//                    }
+                for genreItem in currentFilm.genreIds {
+                    if currentGenre.id == genreItem {
+                        sortedFilm.append(currentFilm)
                     }
-//                    print("fastPrintitemitemitemitem \(genreItem)")
                 }
-                
-            
             }
-                            print("GenreID \(currentGenre.id)")
+            print("sortedFilm \(sortedFilm)")
         }
     }
 

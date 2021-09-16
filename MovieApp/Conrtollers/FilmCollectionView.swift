@@ -41,6 +41,8 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
                 self.tapCallback?(film)
             }
             
+           
+            
             cell.addFilmTapped = {
                 self.filmDelegate?.addFilm(addedFilm: film)
             }

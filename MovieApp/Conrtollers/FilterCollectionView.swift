@@ -36,7 +36,6 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
             cell.backgroundColor = .blue
             cell.layer.cornerRadius = 10
             let genre = generes[indexPath.row]
-//            print("fastPrint \(genre)")
             cell.filterLabel.text = genre.name
             
             cell.tapCall = {
@@ -46,16 +45,7 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
             cell.filterFilmTapped = {
                 self.fiterDelegate?.filterFilm(filteredFilm: genre.name)
                 self.reloadData()
-               
             }
-            
-            
-            enum Genres: Int {
-                case Action = 28
-                //        case Adventure = "Adventure"
-            }
-
-            
             return cell
         }
         return UICollectionViewCell()
