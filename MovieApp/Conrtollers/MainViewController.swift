@@ -11,12 +11,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var filmCollectionView: FilmCollectionView!
     @IBOutlet weak var filterCollectionView: FilterCollectionView!
-    
-    var sortedGeneres: [Genre]  = [] //пустой масив
-    
-
-    
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         filmCollectionView.delegate =  filmCollectionView
@@ -28,20 +23,22 @@ class MainViewController: UIViewController {
         registerCell()
         getJSONFilms()
         getJSONGenere()
-        
+                
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
             }
+        
         filterCollectionView.tapCallback = { currentGenre in
             var sortedFilm = [Film]()
-            for currentFilm in self.filmCollectionView.films {
+            for currentFilm in self.filterCollectionView.sortedFilms {
                 for genreItem in currentFilm.genreIds {
                     if currentGenre.id == genreItem {
                         sortedFilm.append(currentFilm)
                     }
                 }
             }
-            print("sortedFilm \(sortedFilm)")
+            self.filmCollectionView.films = sortedFilm
+            self.filmCollectionView.reloadData()
         }
     }
 
@@ -69,22 +66,17 @@ class MainViewController: UIViewController {
                     return
                 }
                 guard let data = data else {return}
-         
-//                print("responseresponse")
-                let someString = String(data: data, encoding: .utf8)
-                
-  
+//                let someString = String(data: data, encoding: .utf8)
                 if let filmResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     self.filmCollectionView.films = filmResponse.results
                     self.filmCollectionView.reloadData()
                                         
-//                    self.filterCollectionView.films = filmResponse.results
-//                    self.filterCollectionView.reloadData()
+                    self.filterCollectionView.sortedFilms = filmResponse.results
+                    self.filterCollectionView.reloadData()
 
                 } else {
                     print("FAILED")
                 }
-       
             }
         }.resume()
     }
@@ -99,29 +91,16 @@ class MainViewController: UIViewController {
                     return
                 }
                 guard let data = data else {return}
-         
-//                print("responseresponse")
 //                let genereJSON = String(data: data, encoding: .utf8)
-//                print(genereJSON ?? "")
-                
-                
                 if let filterResponse = try? JSONDecoder().decode(ResponseGenre.self, from: data) {
                     self.filterCollectionView.generes = filterResponse.genres
                     self.filterCollectionView.reloadData()
-                
-//                    print("fastPrint \(filterResponse)")
-                    
-                  
                 } else {
                     print("FAILED")
                 }
-                
             }
         }.resume()
     }
-    
-    
-    
 }
 
 extension MainViewController: FilmManagerProtocol {
@@ -131,13 +110,7 @@ extension MainViewController: FilmManagerProtocol {
     func deleteFilm(deletedFilm: Film) {
         print("fastPrint \(deletedFilm)")
     }
-    
 }
-extension MainViewController  {
-    enum Genres: Int {
-        case Action = 28
-    }
 
-}
 
 

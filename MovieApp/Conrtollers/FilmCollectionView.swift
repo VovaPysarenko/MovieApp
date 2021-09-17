@@ -18,14 +18,10 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 50, height: UIScreen.main.bounds.height - 100)
-        
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("fastPrintfilms \(films)")
         return films.count
-
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,9 +36,7 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
             cell.tapCall = {
                 self.tapCallback?(film)
             }
-            
-           
-            
+  
             cell.addFilmTapped = {
                 self.filmDelegate?.addFilm(addedFilm: film)
             }
@@ -57,24 +51,8 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
     }
 }
 
-
 protocol FilmManagerProtocol: AnyObject {
     func addFilm(addedFilm: Film)
-    func deleteFilm(deletedFilm: Film)
+    func deleteFilm(deletedFilm: Film)    
 }
 
-//extension Genre {
-//    var toJSONDict : [NSObject:AnyObject] {
-//        return ["id":id, "name":name]
-//    }
-//}
-
-//func getFilmsByGenre(gener2: Generes) {
-//    let genry1: Generes
-//    switch genry1 {
-//
-//    case .Action:
-//        let d =
-//    case .Adventure:
-//    }
-//}

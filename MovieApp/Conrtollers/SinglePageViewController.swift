@@ -24,15 +24,12 @@ class SinglePageViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
         singleImg.kf.setImage(with: url)
         singlDescriptionLabel.text = film.title
-        descriptionTextView.text = film.overview  
-        
+        descriptionTextView.text = film.overview
     }
-
 }

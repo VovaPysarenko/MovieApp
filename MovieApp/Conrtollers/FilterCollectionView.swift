@@ -11,22 +11,19 @@ class FilterCollectionView: UICollectionView {
     
     
     var generes: [Genre] = []
+    var sortedFilms: [Film] = []
     var tapCallback: ((Genre) -> Void)?
     weak var fiterDelegate: FilterManagerProtocol?
-    
-
-    
 }
+
+
 extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 30)
-        
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("fastPrint \(generes)")
         return generes.count
 
     }
@@ -41,16 +38,14 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
             cell.tapCall = {
                 self.tapCallback?(genre)
             }
-            
-            cell.filterFilmTapped = {
-                self.fiterDelegate?.filterFilm(filteredFilm: genre.name)
-                self.reloadData()
-            }
+//            cell.filterFilmTapped = {
+//                self.fiterDelegate?.filterFilm(filteredFilm: genre.name)
+//                self.reloadData()
+//            }
             return cell
         }
         return UICollectionViewCell()
     }
-    
 
 }
 protocol FilterManagerProtocol: AnyObject {
