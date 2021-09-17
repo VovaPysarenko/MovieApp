@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
             }
             self.filmCollectionView.films = sortedFilm
             self.filmCollectionView.reloadData()
+            self.filmCollectionView.scrollToItem(at: IndexPath(index: 0), at: .top , animated: true)
         }
     }
 
@@ -67,12 +68,14 @@ class MainViewController: UIViewController {
                 }
                 guard let data = data else {return}
 //                let someString = String(data: data, encoding: .utf8)
+//                let all = [Genre]([id: 28, name: "Action"])
                 if let filmResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     self.filmCollectionView.films = filmResponse.results
                     self.filmCollectionView.reloadData()
                                         
                     self.filterCollectionView.sortedFilms = filmResponse.results
                     self.filterCollectionView.reloadData()
+                    
 
                 } else {
                     print("FAILED")
@@ -93,7 +96,8 @@ class MainViewController: UIViewController {
                 guard let data = data else {return}
 //                let genereJSON = String(data: data, encoding: .utf8)
                 if let filterResponse = try? JSONDecoder().decode(ResponseGenre.self, from: data) {
-                    self.filterCollectionView.generes = filterResponse.genres
+                    print("fastPrint \(filterResponse)")
+                    self.filterCollectionView.generes = (filterResponse.genres)
                     self.filterCollectionView.reloadData()
                 } else {
                     print("FAILED")

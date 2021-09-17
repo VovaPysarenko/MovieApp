@@ -12,6 +12,7 @@ class FilmCollectionView: UICollectionView  {
     var films: [Film] = []
     var tapCallback: ((Film) -> Void)?
     weak var filmDelegate: FilmManagerProtocol?
+    
 }
 
 extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -23,6 +24,13 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return films.count
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let i = IndexPath(item: 0, section: 0)
+//        collectionView.reloadData()
+//          collectionView.scrollToItem(at: i, at: .top, animated: true)
+//          print("Selected")
+//      }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCellCollectionViewCell", for: indexPath) as? CustomCellCollectionViewCell {
@@ -45,6 +53,7 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
                 self.films.remove(at: indexPath.row)
                 self.reloadData()
             }
+            
             return cell
         }
    return UICollectionViewCell()
