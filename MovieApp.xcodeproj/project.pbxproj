@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80BB455426F7507600158A04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80BB455326F7507600158A04 /* GoogleService-Info.plist */; };
+		80BB455726F7AA1700158A04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB455526F7AA1700158A04 /* LoginViewController.swift */; };
+		80BB455826F7AA1700158A04 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BB455626F7AA1700158A04 /* LoginViewController.xib */; };
+		80BB455A26F7BA3000158A04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB455926F7BA3000158A04 /* User.swift */; };
+		80C2E3CC26FA608800046172 /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C2E3CB26FA608800046172 /* JSONService.swift */; };
 		80C841DE26E6509600A71674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C841DD26E6509600A71674 /* AppDelegate.swift */; };
 		80C841E726E6509A00A71674 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C841E626E6509A00A71674 /* Assets.xcassets */; };
 		80C841EA26E6509A00A71674 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C841E826E6509A00A71674 /* LaunchScreen.storyboard */; };
@@ -27,6 +32,11 @@
 /* Begin PBXFileReference section */
 		2D391BD20784BE0FE0A33809 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6F2A089046433423CD485B54 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80BB455326F7507600158A04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		80BB455526F7AA1700158A04 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		80BB455626F7AA1700158A04 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		80BB455926F7BA3000158A04 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		80C2E3CB26FA608800046172 /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
 		80C841DA26E6509600A71674 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C841DD26E6509600A71674 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80C841E626E6509A00A71674 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 				80C841DD26E6509600A71674 /* AppDelegate.swift */,
 				80C841E626E6509A00A71674 /* Assets.xcassets */,
 				80C841E826E6509A00A71674 /* LaunchScreen.storyboard */,
+				80BB455326F7507600158A04 /* GoogleService-Info.plist */,
 				80C841EB26E6509A00A71674 /* Info.plist */,
 				80C8420D26E8AF7900A71674 /* Models */,
 				80C8420E26E8AF8700A71674 /* Views */,
@@ -101,6 +112,7 @@
 		80C8420D26E8AF7900A71674 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80BB455926F7BA3000158A04 /* User.swift */,
 				80C8421026E8CFBA00A71674 /* Response.swift */,
 			);
 			path = Models;
@@ -110,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				80C841F626E6580F00A71674 /* MainViewController.xib */,
+				80BB455626F7AA1700158A04 /* LoginViewController.xib */,
 				80C8420226E75DCA00A71674 /* CustomCellCollectionViewCell.xib */,
 				80C8420A26E7AF4E00A71674 /* FilterCollectionCell.xib */,
 				80C8421626EA301500A71674 /* SinglePageViewController.xib */,
@@ -121,11 +134,13 @@
 			isa = PBXGroup;
 			children = (
 				80C841F526E6580F00A71674 /* MainViewController.swift */,
+				80BB455526F7AA1700158A04 /* LoginViewController.swift */,
 				80C8420526E79FC900A71674 /* FilmCollectionView.swift */,
 				80C8420126E75DCA00A71674 /* CustomCellCollectionViewCell.swift */,
 				80C8420726E7AB2B00A71674 /* FilterCollectionView.swift */,
 				80C8420926E7AF4E00A71674 /* FilterCollectionCell.swift */,
 				80C8421526EA301500A71674 /* SinglePageViewController.swift */,
+				80C2E3CB26FA608800046172 /* JSONService.swift */,
 			);
 			path = Conrtollers;
 			sourceTree = "<group>";
@@ -202,12 +217,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BB455826F7AA1700158A04 /* LoginViewController.xib in Resources */,
 				80C841EA26E6509A00A71674 /* LaunchScreen.storyboard in Resources */,
 				80C8421826EA301500A71674 /* SinglePageViewController.xib in Resources */,
 				80C841F826E6580F00A71674 /* MainViewController.xib in Resources */,
 				80C8420426E75DCA00A71674 /* CustomCellCollectionViewCell.xib in Resources */,
 				80C8420C26E7AF4E00A71674 /* FilterCollectionCell.xib in Resources */,
 				80C841E726E6509A00A71674 /* Assets.xcassets in Resources */,
+				80BB455426F7507600158A04 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BB455726F7AA1700158A04 /* LoginViewController.swift in Sources */,
 				80C841F726E6580F00A71674 /* MainViewController.swift in Sources */,
 				80C8420B26E7AF4E00A71674 /* FilterCollectionCell.swift in Sources */,
 				80C8420826E7AB2B00A71674 /* FilterCollectionView.swift in Sources */,
@@ -267,6 +285,8 @@
 				80C8420626E79FC900A71674 /* FilmCollectionView.swift in Sources */,
 				80C8420326E75DCA00A71674 /* CustomCellCollectionViewCell.swift in Sources */,
 				80C8421126E8CFBA00A71674 /* Response.swift in Sources */,
+				80BB455A26F7BA3000158A04 /* User.swift in Sources */,
+				80C2E3CC26FA608800046172 /* JSONService.swift in Sources */,
 				80C8421726EA301500A71674 /* SinglePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

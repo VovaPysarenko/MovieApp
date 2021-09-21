@@ -7,5 +7,9 @@ target 'MovieApp' do
 
   # Pods for MovieApp
   pod 'Kingfisher'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'CodableFirebase'
 
 end

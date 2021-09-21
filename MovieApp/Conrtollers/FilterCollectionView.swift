@@ -9,11 +9,10 @@ import UIKit
 
 class FilterCollectionView: UICollectionView {
     
-    
     var generes: [Genre] = []
     var sortedFilms: [Film] = []
     var tapCallback: ((Genre) -> Void)?
-    weak var fiterDelegate: FilterManagerProtocol?
+    weak var filterDelegate: FilterManagerProtocol?
 }
 
 
