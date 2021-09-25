@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(dismissSelf))
         filmCollectionView.delegate =  filmCollectionView
         filmCollectionView.dataSource = filmCollectionView
         filterCollectionView.delegate =  filterCollectionView
@@ -59,16 +60,27 @@ class MainViewController: UIViewController {
         }
         
         getFBGenre() { [weak self] currentGenre in
-            
             self?.filterCollectionView.generes = currentGenre
+            self?.filterCollectionView.generes.append(Genre(id: 1000, name: "All"))
             self?.filterCollectionView.reloadData()
         }
     }
-
+    
     func setupLayout() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
+        navigationItem.setHidesBackButton(true, animated: false)
 //        navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.title = "Movies"
+    }
+    @objc func logOut() {
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        do {
+            try Auth.auth().signOut()
+        } catch let err {
+            print(err)
+        }
     }
     
     func registerCell() {
@@ -100,6 +112,7 @@ class MainViewController: UIViewController {
     private func getFBGenre(completion: @escaping (([Genre]) -> Void)) {
         self.ref.child("genres").observeSingleEvent(of: .value, with: { snapshot in
             if snapshot.exists() {
+//                print("fastPrintsnapshotsnapshot \(snapshot)")
             guard let data = try? JSONSerialization
                     .data(withJSONObject: snapshot.value as Any, options: []),
                   let genre = try? JSONDecoder().decode([Genre].self, from: data) else {
@@ -135,12 +148,9 @@ class MainViewController: UIViewController {
                     let rawFilms = try? FirebaseEncoder().encode(filmResponse.results)
                     let childUpdates = ["results" : rawFilms]
                     self.ref.updateChildValues(childUpdates as [AnyHashable : Any])
-
-
                 } else {
                     print("FAILED")
                 }
-
             }
         }.resume()
     }
@@ -163,8 +173,6 @@ class MainViewController: UIViewController {
                     let rawGeres = try? FirebaseEncoder().encode(filterResponse.genres)
                     let childUpdates = ["genres" : rawGeres]
                     self.ref.updateChildValues(childUpdates as [AnyHashable : Any])
-
-
                 } else {
                     print("FAILED")
                 }

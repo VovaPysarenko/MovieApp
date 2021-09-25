@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     func errorInfoLable(withText text: String) {
         infoLable.text = text
         
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
             self?.infoLable.alpha = 1
         }) { [weak self] complete in
             self?.infoLable.alpha = 0
@@ -80,42 +80,38 @@ class LoginViewController: UIViewController {
         
     
     @IBAction func registerTapped(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
+        guard let email = emailTextField.text, let password = passwordTextField.text, email != "", isPasswordValid(password) else {
             errorInfoLable(withText: "Info is incorrect")
             return
         }
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
-            
-            guard error == nil, let user = authResult?.user else {
-
-                print(error!.localizedDescription)
-//                print("fastPrintauthResultauthResultauthResult \(String(describing: authResult))")
+        Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] (authResult, error) in
+            if error != nil {
+                self?.errorInfoLable(withText: "Info is incorrect")
                 return
             }
-//            print("fastPrintuseruseruseruseruser \(user)")
-
-//            let userRef = self?.ref.child(user.uid)
-//            userRef?.setValue(user.email, forKey: "email")
+            guard error == nil, let user = authResult?.user else {
+                print(error!.localizedDescription)
+                //                print("fastPrintauthResultauthResultauthResult \(String(describing: authResult))")
+                return
+            }
+            //            print("fastPrintuseruseruseruseruser \(user)")
             
-            
+            //            let userRef = self?.ref.child(user.uid)
+            //            userRef?.setValue(user.email, forKey: "email")
         })
         
     }
-    
-    let response = [Response]()
-    
-    func pushToFB() {
-
-    }
-    
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func isPasswordValid(_ password : String) -> Bool{
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[0-9])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
     }
 
 }

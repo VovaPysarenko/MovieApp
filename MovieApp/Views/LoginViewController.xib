@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3JU-fa-VU6">
-                            <rect key="frame" x="100" y="250" width="214" height="40"/>
+                            <rect key="frame" x="100" y="100" width="214" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="3nr-Yl-FJ5"/>
                             </constraints>
@@ -33,7 +33,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1pq-H8-my2">
-                            <rect key="frame" x="100" y="315" width="214" height="40"/>
+                            <rect key="frame" x="100" y="165" width="214" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="3sj-Nm-CoJ"/>
                             </constraints>
@@ -41,7 +41,7 @@
                             <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z6-pf-Tf8">
-                            <rect key="frame" x="110" y="405" width="194" height="40"/>
+                            <rect key="frame" x="110" y="255" width="194" height="40"/>
                             <color key="backgroundColor" red="0.2275260389" green="0.70576959849999998" blue="0.8666912913" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="KWo-am-5sw"/>
@@ -54,7 +54,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-nO-fcd">
-                            <rect key="frame" x="110" y="475" width="194" height="40"/>
+                            <rect key="frame" x="110" y="325" width="194" height="40"/>
                             <color key="backgroundColor" red="0.2275260389" green="0.70576959849999998" blue="0.8666912913" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="VxU-k4-TPO"/>
@@ -67,7 +67,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLO-NB-tN8">
-                            <rect key="frame" x="100" y="535" width="214" height="20"/>
+                            <rect key="frame" x="100" y="385" width="214" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="It0-9s-948"/>
                             </constraints>
@@ -78,7 +78,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="3JU-fa-VU6" firstAttribute="top" secondItem="9w3-rx-Bzt" secondAttribute="top" constant="250" id="3bu-0V-zIj"/>
+                        <constraint firstItem="3JU-fa-VU6" firstAttribute="top" secondItem="9w3-rx-Bzt" secondAttribute="top" constant="100" id="3bu-0V-zIj"/>
                         <constraint firstItem="DzW-nO-fcd" firstAttribute="leading" secondItem="9w3-rx-Bzt" secondAttribute="leading" constant="110" id="4F1-wx-qMg"/>
                         <constraint firstItem="nLO-NB-tN8" firstAttribute="top" secondItem="DzW-nO-fcd" secondAttribute="bottom" constant="20" id="7hQ-Cp-Wv9"/>
                         <constraint firstItem="nLO-NB-tN8" firstAttribute="leading" secondItem="9w3-rx-Bzt" secondAttribute="leading" constant="100" id="Ee1-1t-jlN"/>

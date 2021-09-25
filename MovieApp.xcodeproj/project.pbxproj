@@ -11,7 +11,6 @@
 		80BB455726F7AA1700158A04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB455526F7AA1700158A04 /* LoginViewController.swift */; };
 		80BB455826F7AA1700158A04 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BB455626F7AA1700158A04 /* LoginViewController.xib */; };
 		80BB455A26F7BA3000158A04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB455926F7BA3000158A04 /* User.swift */; };
-		80C2E3CC26FA608800046172 /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C2E3CB26FA608800046172 /* JSONService.swift */; };
 		80C841DE26E6509600A71674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C841DD26E6509600A71674 /* AppDelegate.swift */; };
 		80C841E726E6509A00A71674 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C841E626E6509A00A71674 /* Assets.xcassets */; };
 		80C841EA26E6509A00A71674 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C841E826E6509A00A71674 /* LaunchScreen.storyboard */; };
@@ -36,7 +35,6 @@
 		80BB455526F7AA1700158A04 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80BB455626F7AA1700158A04 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		80BB455926F7BA3000158A04 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		80C2E3CB26FA608800046172 /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
 		80C841DA26E6509600A71674 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C841DD26E6509600A71674 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80C841E626E6509A00A71674 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				80C8420726E7AB2B00A71674 /* FilterCollectionView.swift */,
 				80C8420926E7AF4E00A71674 /* FilterCollectionCell.swift */,
 				80C8421526EA301500A71674 /* SinglePageViewController.swift */,
-				80C2E3CB26FA608800046172 /* JSONService.swift */,
 			);
 			path = Conrtollers;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				80C8420326E75DCA00A71674 /* CustomCellCollectionViewCell.swift in Sources */,
 				80C8421126E8CFBA00A71674 /* Response.swift in Sources */,
 				80BB455A26F7BA3000158A04 /* User.swift in Sources */,
-				80C2E3CC26FA608800046172 /* JSONService.swift in Sources */,
 				80C8421726EA301500A71674 /* SinglePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +430,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = VP.MovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = VP.MovieAppV1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -454,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = VP.MovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = VP.MovieAppV1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
