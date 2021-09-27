@@ -80,8 +80,13 @@ class LoginViewController: UIViewController {
         
     
     @IBAction func registerTapped(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, email != "", isPasswordValid(password) else {
-            errorInfoLable(withText: "Info is incorrect")
+        guard let email = emailTextField.text, isEmailValid(email) else {
+            errorInfoLable(withText: "Email is wrong")
+            return
+        }
+        
+        guard let password = passwordTextField.text,  password != "", isPasswordValid(password) else {
+            errorInfoLable(withText: "Use 8 characters (letters, numbers and symbols")
             return
         }
         Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] (authResult, error) in
@@ -112,6 +117,11 @@ extension LoginViewController: UITextFieldDelegate {
     func isPasswordValid(_ password : String) -> Bool{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[0-9])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
+    }
+
+    func isEmailValid(_ email : String) -> Bool{
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        return emailTest.evaluate(with: email)
     }
 
 }

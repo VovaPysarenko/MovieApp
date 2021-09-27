@@ -66,10 +66,10 @@
                                 <action selector="registerTapped:" destination="-1" eventType="touchUpInside" id="UUD-tX-L9c"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLO-NB-tN8">
-                            <rect key="frame" x="100" y="385" width="214" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nLO-NB-tN8">
+                            <rect key="frame" x="100" y="385" width="214" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="It0-9s-948"/>
+                                <constraint firstAttribute="height" constant="40" id="It0-9s-948"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" systemColor="systemPinkColor"/>

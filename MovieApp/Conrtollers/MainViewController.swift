@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
         
         getFBGenre() { [weak self] currentGenre in
             self?.filterCollectionView.generes = currentGenre
-            self?.filterCollectionView.generes.append(Genre(id: 1000, name: "All"))
+            self?.filterCollectionView.generes.append(Genre(id: 0, name: "All"))
             self?.filterCollectionView.reloadData()
         }
     }
