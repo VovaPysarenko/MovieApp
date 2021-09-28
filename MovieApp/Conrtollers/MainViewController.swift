@@ -39,10 +39,10 @@ class MainViewController: UIViewController {
             var sortedFilm = [Film]()
             if currentGenre.id == -2 {
                 sortedFilm = self.filterCollectionView.sortedFilms
-                self.filmCollectionView.reloadData()
+//                self.filmCollectionView.reloadData()
             } else if currentGenre.id == -1 {
                sortedFilm = self.filmCollectionView.wishesFilm
-                self.filmCollectionView.reloadData()
+//                self.filmCollectionView.reloadData()
             } else {
                 for currentFilm in self.filterCollectionView.sortedFilms {
                     for genreItem in currentFilm.genreIds {
