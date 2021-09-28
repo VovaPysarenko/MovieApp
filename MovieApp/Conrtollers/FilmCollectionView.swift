@@ -10,6 +10,7 @@ import Kingfisher
 
 class FilmCollectionView: UICollectionView  {
     var films: [Film] = []
+    var wishesFilm: [Film] = []  //-------------------------------
     var tapCallback: ((Film) -> Void)?
     weak var filmDelegate: FilmManagerProtocol?
     
@@ -35,7 +36,7 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCellCollectionViewCell", for: indexPath) as? CustomCellCollectionViewCell {
             cell.backgroundColor = .gray
-            let film = films[indexPath.row]
+            var film = films[indexPath.row]
             cell.descriptionLabel.text = film.title
             cell.textView.text = film.overview
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
@@ -47,6 +48,13 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
   
             cell.addFilmTapped = {
                 self.filmDelegate?.addFilm(addedFilm: film)
+//                self.films.append(film)
+//                self.films.append(film.genreIds(1))
+                film.genreIds.append(-2)
+                self.wishesFilm.append(film)
+                print("fastPrint filmfilmfilmfilmfilmfilmfilmfilmfilmfilm\(film)")
+                print("fastPrintwishesFilmwishesFilmwishesFilmwishesFilmwishesFilmwishesFilm \(self.wishesFilm)")
+                self.reloadData()
             }
             cell.deleteFilmTapped = {
                 self.filmDelegate?.deleteFilm(deletedFilm: film)

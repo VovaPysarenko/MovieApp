@@ -31,9 +31,9 @@ extension FilterCollectionView:  UICollectionViewDelegate,  UICollectionViewData
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionCell", for: indexPath) as? FilterCollectionCell {
             cell.backgroundColor = .blue
             cell.layer.cornerRadius = 10
-            let genre = generes[indexPath.row]
+            let sorted = generes.sorted { $0.id < $1.id}
+            let genre = sorted[indexPath.row]
             cell.filterLabel.text = genre.name
-            
             cell.tapCall = {
                 self.tapCallback?(genre)
             }

@@ -35,12 +35,20 @@ class MainViewController: UIViewController {
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
             }
         
-        filterCollectionView.tapCallback = { currentGenre in
+        filterCollectionView.tapCallback = {  currentGenre in
             var sortedFilm = [Film]()
-            for currentFilm in self.filterCollectionView.sortedFilms {
-                for genreItem in currentFilm.genreIds {
-                    if currentGenre.id == genreItem {
-                        sortedFilm.append(currentFilm)
+            if currentGenre.id == -2 {
+                sortedFilm = self.filterCollectionView.sortedFilms
+                self.filmCollectionView.reloadData()
+            } else if currentGenre.id == -1 {
+               sortedFilm = self.filmCollectionView.wishesFilm
+                self.filmCollectionView.reloadData()
+            } else {
+                for currentFilm in self.filterCollectionView.sortedFilms {
+                    for genreItem in currentFilm.genreIds {
+                        if currentGenre.id == genreItem {
+                            sortedFilm.append(currentFilm)
+                        }
                     }
                 }
             }
@@ -61,7 +69,8 @@ class MainViewController: UIViewController {
         
         getFBGenre() { [weak self] currentGenre in
             self?.filterCollectionView.generes = currentGenre
-            self?.filterCollectionView.generes.append(Genre(id: 0, name: "All"))
+            self?.filterCollectionView.generes.append(Genre(id: -2, name: "All"))
+            self?.filterCollectionView.generes.append(Genre(id: -1, name: "Favorites"))
             self?.filterCollectionView.reloadData()
         }
     }

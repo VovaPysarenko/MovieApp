@@ -44,7 +44,6 @@ class LoginViewController: UIViewController {
         passwordTextField.text = ""
     }
     
-    
     func errorInfoLable(withText text: String) {
         infoLable.text = text
         
@@ -56,35 +55,33 @@ class LoginViewController: UIViewController {
         
     }
 
-    
     @IBAction func loginTapped(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
-            errorInfoLable(withText: "Info is incorrect")
+        guard let email = emailTextField.text, isEmailValid(email) else {
+            errorInfoLable(withText: "Email is wrong")
             return
         }
-        
+        guard let password = passwordTextField.text,  password != "", isPasswordValid(password) else {
+            errorInfoLable(withText: "Use 8 characters (letters, numbers and symbols")
+            return
+        }
         Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
             if error != nil {
                 self?.errorInfoLable(withText: "Error")
                 return
             }
-            
-            if user != nil {
-                self?.navigationController?.pushViewController(MainViewController(), animated: true)
-                return
-            }
-            
+//            if user != nil {
+//                self?.navigationController?.pushViewController(MainViewController(), animated: true)
+//                return
+//            }
             self?.errorInfoLable(withText: "User not found")
         })
     }
         
-    
     @IBAction func registerTapped(_ sender: Any) {
         guard let email = emailTextField.text, isEmailValid(email) else {
             errorInfoLable(withText: "Email is wrong")
             return
         }
-        
         guard let password = passwordTextField.text,  password != "", isPasswordValid(password) else {
             errorInfoLable(withText: "Use 8 characters (letters, numbers and symbols")
             return
@@ -104,7 +101,6 @@ class LoginViewController: UIViewController {
             //            let userRef = self?.ref.child(user.uid)
             //            userRef?.setValue(user.email, forKey: "email")
         })
-        
     }
 }
 
