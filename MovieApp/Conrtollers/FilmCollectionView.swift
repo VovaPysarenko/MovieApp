@@ -52,8 +52,6 @@ extension FilmCollectionView:  UICollectionViewDelegate,  UICollectionViewDataSo
 //                self.films.append(film.genreIds(1))
                 film.genreIds.append(-2)
                 self.wishesFilm.append(film)
-                print("fastPrint filmfilmfilmfilmfilmfilmfilmfilmfilmfilm\(film)")
-                print("fastPrintwishesFilmwishesFilmwishesFilmwishesFilmwishesFilmwishesFilm \(self.wishesFilm)")
                 self.reloadData()
             }
             cell.deleteFilmTapped = {

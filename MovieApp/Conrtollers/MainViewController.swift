@@ -36,30 +36,27 @@ class MainViewController: UIViewController {
             }
         
         filterCollectionView.tapCallback = {  currentGenre in
-            var sortedFilm = [Film]()
+            var sortFilms = [Film]()
             if currentGenre.id == -2 {
-                sortedFilm = self.filterCollectionView.sortedFilms
+                sortFilms = self.filterCollectionView.sortedFilms
 //                self.filmCollectionView.reloadData()
             } else if currentGenre.id == -1 {
-               sortedFilm = self.filmCollectionView.wishesFilm
+               sortFilms = self.filmCollectionView.wishesFilm
 //                self.filmCollectionView.reloadData()
             } else {
                 for currentFilm in self.filterCollectionView.sortedFilms {
                     for genreItem in currentFilm.genreIds {
                         if currentGenre.id == genreItem {
-                            sortedFilm.append(currentFilm)
+                            sortFilms.append(currentFilm)
                         }
                     }
                 }
             }
-            self.filmCollectionView.films = sortedFilm
+            self.filmCollectionView.films = sortFilms
             self.filmCollectionView.reloadData()
             self.filmCollectionView.scrollToItem(at: IndexPath(index: 0), at: .top , animated: true)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         getFBFilms() { [weak self] films in
             self?.filmCollectionView.films = films
             self?.filmCollectionView.reloadData()
@@ -73,6 +70,23 @@ class MainViewController: UIViewController {
             self?.filterCollectionView.generes.append(Genre(id: -1, name: "Favorites"))
             self?.filterCollectionView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        getFBFilms() { [weak self] films in
+//            self?.filmCollectionView.films = films
+////            self?.filmCollectionView.reloadData()
+//            self?.filterCollectionView.sortedFilms = films
+//            self?.filterCollectionView.reloadData()
+//        }
+//
+//        getFBGenre() { [weak self] currentGenre in
+//            self?.filterCollectionView.generes = currentGenre
+//            self?.filterCollectionView.generes.append(Genre(id: -2, name: "All"))
+//            self?.filterCollectionView.generes.append(Genre(id: -1, name: "Favorites"))
+//            self?.filterCollectionView.reloadData()
+//        }
     }
     
     func setupLayout() {
