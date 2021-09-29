@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 //                print("authauthauthauthauth \(auth)")
 //                print("useruseruseruseruseruser \(user?.uid)")
                 //--------
-                self?.navigationController?.pushViewController(MainViewController(), animated: true)
+                self?.navigationController?.pushViewController(MainConfigurator().create(), animated: true)
             }
         })
 

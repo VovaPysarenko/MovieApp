@@ -13,13 +13,14 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var filmCollectionView: FilmCollectionView!
     @IBOutlet weak var filterCollectionView: FilterCollectionView!
-    
+    var presenter: MainPresenterProtocol!
     private var ref = Database.database().reference()
-    var fBProvider = FBProvider()
 //    let sourse = JSONService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("presenter \(presenter)")
+        self.presenter.viewDidLoad()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(dismissSelf))
         filmCollectionView.delegate =  filmCollectionView
         filmCollectionView.dataSource = filmCollectionView
@@ -28,8 +29,6 @@ class MainViewController: UIViewController {
         filmCollectionView.filmDelegate = self
         setupLayout()
         registerCell()
-        fBProvider.getJSONFilms()
-        fBProvider.getJSONGenere()
             
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
@@ -56,37 +55,6 @@ class MainViewController: UIViewController {
             self.filmCollectionView.reloadData()
             self.filmCollectionView.scrollToItem(at: IndexPath(index: 0), at: .top , animated: true)
         }
-        
-        fBProvider.getFBFilms() { [weak self] films in
-            self?.filmCollectionView.films = films
-            self?.filmCollectionView.reloadData()
-            self?.filterCollectionView.sortedFilms = films
-            self?.filterCollectionView.reloadData()
-        }
-        
-        fBProvider.getFBGenre() { [weak self] currentGenre in
-            self?.filterCollectionView.generes = currentGenre
-            self?.filterCollectionView.generes.append(Genre(id: -2, name: "All"))
-            self?.filterCollectionView.generes.append(Genre(id: -1, name: "Favorites"))
-            self?.filterCollectionView.reloadData()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        getFBFilms() { [weak self] films in
-//            self?.filmCollectionView.films = films
-////            self?.filmCollectionView.reloadData()
-//            self?.filterCollectionView.sortedFilms = films
-//            self?.filterCollectionView.reloadData()
-//        }
-//
-//        getFBGenre() { [weak self] currentGenre in
-//            self?.filterCollectionView.generes = currentGenre
-//            self?.filterCollectionView.generes.append(Genre(id: -2, name: "All"))
-//            self?.filterCollectionView.generes.append(Genre(id: -1, name: "Favorites"))
-//            self?.filterCollectionView.reloadData()
-//        }
     }
     
     func setupLayout() {
@@ -213,5 +181,6 @@ extension MainViewController: FilmManagerProtocol {
     }
 }
 
-
-
+extension MainViewController: MainViewProtocol {
+    func reloadFilmCollectionView() {}
+}
