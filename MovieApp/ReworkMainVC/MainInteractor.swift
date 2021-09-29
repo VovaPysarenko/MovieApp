@@ -42,4 +42,5 @@ protocol MainPresenterProtocol: AnyObject {
 protocol MainViewProtocol: AnyObject {
     var presenter: MainPresenterProtocol! { get set }
     func reloadFilmCollectionView()
+    func getFilmsForCollection(films: [Film])
 }

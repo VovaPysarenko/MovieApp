@@ -29,6 +29,8 @@ class MainViewController: UIViewController {
         filmCollectionView.filmDelegate = self
         setupLayout()
         registerCell()
+        
+//        presenter.view.getFilmsForCollection(films: <#T##[Film]#>)
             
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
@@ -183,4 +185,9 @@ extension MainViewController: FilmManagerProtocol {
 
 extension MainViewController: MainViewProtocol {
     func reloadFilmCollectionView() {}
+    func getFilmsForCollection(films: [Film]) {
+        presenter.getFilms(films: films)
+        self.filmCollectionView.films = films
+    }
+
 }

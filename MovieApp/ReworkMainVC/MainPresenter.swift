@@ -24,4 +24,8 @@ class MainPresenter: MainPresenterProtocol {
         
         print("genres \(genres)")
     }
+    
+    func getFilmsForCollection(films: [Film]) {
+        getFilms(films: films)
+    }
 }
