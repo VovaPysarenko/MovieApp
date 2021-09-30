@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("presenter \(presenter)")
+//        print("presenter \(presenter)")
         self.presenter.viewDidLoad()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(dismissSelf))
         filmCollectionView.delegate =  filmCollectionView
@@ -30,20 +30,28 @@ class MainViewController: UIViewController {
         setupLayout()
         registerCell()
         
-//        presenter.view.getFilmsForCollection(films: <#T##[Film]#>)
-            
+//        getFilmsForCollection(films: presenter) {
+//            self.filmCollectionView.films = films
+//            self.filmCollectionView.reloadData()
+//        }
+//        getFBFilms() { [weak self] films in
+//                    self?.filmCollectionView.films = films
+//                    self?.filmCollectionView.reloadData()
+//                }
+
+        
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
             }
         
-        filterCollectionView.tapCallback = {  currentGenre in
+        filterCollectionView.tapCallback = { currentGenre in
             var sortFilms = [Film]()
             if currentGenre.id == -2 {
                 sortFilms = self.filterCollectionView.sortedFilms
-//                self.filmCollectionView.reloadData()
+                self.filmCollectionView.reloadData()
             } else if currentGenre.id == -1 {
                sortFilms = self.filmCollectionView.wishesFilm
-//                self.filmCollectionView.reloadData()
+                self.filmCollectionView.reloadData()
             } else {
                 for currentFilm in self.filterCollectionView.sortedFilms {
                     for genreItem in currentFilm.genreIds {
@@ -58,6 +66,8 @@ class MainViewController: UIViewController {
             self.filmCollectionView.scrollToItem(at: IndexPath(index: 0), at: .top , animated: true)
         }
     }
+    
+
     
     func setupLayout() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
@@ -184,10 +194,14 @@ extension MainViewController: FilmManagerProtocol {
 }
 
 extension MainViewController: MainViewProtocol {
-    func reloadFilmCollectionView() {}
     func getFilmsForCollection(films: [Film]) {
-        presenter.getFilms(films: films)
         self.filmCollectionView.films = films
+        self.filmCollectionView.reloadData()
     }
+    func getGenresForCollection(genres: [Genre]) {
+        self.filterCollectionView.generes = genres
+        self.filterCollectionView.reloadData()
+    }
+    func reloadFilmCollectionView() {}
 
 }

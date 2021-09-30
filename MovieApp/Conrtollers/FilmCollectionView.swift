@@ -10,7 +10,7 @@ import Kingfisher
 
 class FilmCollectionView: UICollectionView  {
     var films: [Film] = []
-    var wishesFilm: [Film] = []  //-------------------------------
+    var wishesFilm: [Film] = []
     var tapCallback: ((Film) -> Void)?
     weak var filmDelegate: FilmManagerProtocol?
     

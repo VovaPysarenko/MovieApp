@@ -17,15 +17,13 @@ class MainPresenter: MainPresenterProtocol {
     }
 
     func getFilms(films: [Film]) {
-        print("films2222 \(films)")
+        view.getFilmsForCollection(films: films)
+//        print("films2222viewviewviewviewviewviewviewviewviewview \(films)")
     }
     
     func getGenres(genres: [Genre]) {
-        
-        print("genres \(genres)")
+        view.getGenresForCollection(genres: genres)
+//        print("genres \(genres)")
     }
-    
-    func getFilmsForCollection(films: [Film]) {
-        getFilms(films: films)
-    }
+
 }

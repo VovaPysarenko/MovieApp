@@ -13,7 +13,7 @@ class MainInteractor: MainInteractorProtocol {
     
     func getFilms() {
         fbProvider.getFBFilms() { films in
-            print("films \(films)")
+//            print("films \(films)")
             self.presenter.getFilms(films: films)
         }
     }
@@ -43,4 +43,5 @@ protocol MainViewProtocol: AnyObject {
     var presenter: MainPresenterProtocol! { get set }
     func reloadFilmCollectionView()
     func getFilmsForCollection(films: [Film])
+    func getGenresForCollection(genres: [Genre])
 }
