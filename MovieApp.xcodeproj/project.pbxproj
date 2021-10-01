@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8048961E27077B6C0021ACF7 /* MainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048961D27077B6C0021ACF7 /* MainProtocol.swift */; };
 		80BB455426F7507600158A04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80BB455326F7507600158A04 /* GoogleService-Info.plist */; };
 		80BB455726F7AA1700158A04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB455526F7AA1700158A04 /* LoginViewController.swift */; };
 		80BB455826F7AA1700158A04 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BB455626F7AA1700158A04 /* LoginViewController.xib */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		2D391BD20784BE0FE0A33809 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6F2A089046433423CD485B54 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8048961D27077B6C0021ACF7 /* MainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocol.swift; sourceTree = "<group>"; };
 		80BB455326F7507600158A04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80BB455526F7AA1700158A04 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80BB455626F7AA1700158A04 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 		80C8420F26E8AF9700A71674 /* Conrtollers */ = {
 			isa = PBXGroup;
 			children = (
-				80C841F526E6580F00A71674 /* MainViewController.swift */,
 				80BB455526F7AA1700158A04 /* LoginViewController.swift */,
 				80C8420526E79FC900A71674 /* FilmCollectionView.swift */,
 				80C8420126E75DCA00A71674 /* CustomCellCollectionViewCell.swift */,
@@ -154,10 +155,12 @@
 		A2E0320327030B1300DB9AE7 /* ReworkMainVC */ = {
 			isa = PBXGroup;
 			children = (
+				80C841F526E6580F00A71674 /* MainViewController.swift */,
 				A2E0320427030B2E00DB9AE7 /* MainPresenter.swift */,
 				A2E0320627030B3A00DB9AE7 /* MainInteractor.swift */,
 				A2E0320827030B5200DB9AE7 /* FBProvider.swift */,
 				A29CF292270453D300DDA039 /* MainConfigurator.swift */,
+				8048961D27077B6C0021ACF7 /* MainProtocol.swift */,
 			);
 			path = ReworkMainVC;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				80BB455726F7AA1700158A04 /* LoginViewController.swift in Sources */,
 				80C841F726E6580F00A71674 /* MainViewController.swift in Sources */,
+				8048961E27077B6C0021ACF7 /* MainProtocol.swift in Sources */,
 				A2E0320927030B5200DB9AE7 /* FBProvider.swift in Sources */,
 				80C8420B26E7AF4E00A71674 /* FilterCollectionCell.swift in Sources */,
 				80C8420826E7AB2B00A71674 /* FilterCollectionView.swift in Sources */,

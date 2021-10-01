@@ -10,7 +10,7 @@ import UIKit
 class FilterCollectionView: UICollectionView {
     
     var generes: [Genre] = []
-    var sortedFilms: [Film] = []
+//    var sortedFilms: [Film] = []
     var tapCallback: ((Genre) -> Void)?
     weak var filterDelegate: FilterManagerProtocol?
 }

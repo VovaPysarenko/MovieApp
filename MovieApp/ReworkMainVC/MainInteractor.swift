@@ -25,23 +25,23 @@ class MainInteractor: MainInteractorProtocol {
     }
 }
 
-protocol MainInteractorProtocol: AnyObject {
-    func getFilms()
-    func getGenres()
-    var presenter: MainPresenterProtocol! { get set }
-}
-
-protocol MainPresenterProtocol: AnyObject {
-    func getFilms(films: [Film])
-    func getGenres(genres: [Genre])
-    func viewDidLoad()
-    var interactor: MainInteractorProtocol! { get set }
-    var view: MainViewProtocol! { get set }
-}
-
-protocol MainViewProtocol: AnyObject {
-    var presenter: MainPresenterProtocol! { get set }
-    func reloadFilmCollectionView()
-    func getFilmsForCollection(films: [Film])
-    func getGenresForCollection(genres: [Genre])
-}
+//protocol MainInteractorProtocol: AnyObject {
+//    func getFilms()
+//    func getGenres()
+//    var presenter: MainPresenterProtocol! { get set }
+//}
+//
+//protocol MainPresenterProtocol: AnyObject {
+//    func getFilms(films: [Film])
+//    func getGenres(genres: [Genre])
+//    func viewDidLoad()
+//    var interactor: MainInteractorProtocol! { get set }
+//    var view: MainViewProtocol! { get set }
+//}
+//
+//protocol MainViewProtocol: AnyObject {
+//    var presenter: MainPresenterProtocol! { get set }
+//    func reloadFilmCollectionView()
+//    func getFilmsForCollection(films: [Film])
+//    func getGenresForCollection(genres: [Genre])
+//}
