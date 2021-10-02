@@ -27,37 +27,15 @@ class MainViewController: UIViewController {
         filterCollectionView.dataSource = filterCollectionView
         filmCollectionView.filmDelegate = self
         setupLayout()
-        registerCell()
-        
 
         filmCollectionView.tapCallback = { [weak self] currentFilm in
             self?.navigationController?.pushViewController(SinglePageViewController(film: currentFilm), animated: true)
             }
         
         filterCollectionView.tapCallback = { currentGenre in
-            var sortFilms = [Film]()
-            if currentGenre.id == -2 {
-                sortFilms = self.filterCollectionView.sortedFilms
-                self.filmCollectionView.reloadData()
-            } else if currentGenre.id == -1 {
-               sortFilms = self.filmCollectionView.wishesFilm
-                self.filmCollectionView.reloadData()
-            } else {
-                for currentFilm in self.filterCollectionView.sortedFilms {
-                    for genreItem in currentFilm.genreIds {
-                        if currentGenre.id == genreItem {
-                            sortFilms.append(currentFilm)
-                        }
-                    }
-                }
-            }
-            self.filmCollectionView.films = sortFilms
-            self.filmCollectionView.reloadData()
-            self.filmCollectionView.scrollToItem(at: IndexPath(index: 0), at: .top , animated: true)
+            self.presenter.filterFilms(currentGenre: currentGenre)
         }
     }
-    
-
     
     func setupLayout() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
@@ -65,7 +43,9 @@ class MainViewController: UIViewController {
 //        navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.title = "Movies"
+        registerCell()
     }
+    
     @objc func logOut() {
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
@@ -89,8 +69,12 @@ class MainViewController: UIViewController {
 
 extension MainViewController: FilmManagerProtocol {
     func addFilm(addedFilm: Film) {
+        var addedFilm = addedFilm
+        addedFilm.genreIds = [-1]
+        self.presenter.addFilmToMyCategory(addedFilm: addedFilm)
         print("addedFilmaddedFilm \(addedFilm)")
     }
+    
     func deleteFilm(deletedFilm: Film) {
         print("fastPrint \(deletedFilm)")
     }

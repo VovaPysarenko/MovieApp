@@ -25,6 +25,7 @@
 		80C8421126E8CFBA00A71674 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8421026E8CFBA00A71674 /* Response.swift */; };
 		80C8421726EA301500A71674 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8421526EA301500A71674 /* SinglePageViewController.swift */; };
 		80C8421826EA301500A71674 /* SinglePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C8421626EA301500A71674 /* SinglePageViewController.xib */; };
+		A23F62DA2706FFD800151F0F /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F62D92706FFD800151F0F /* MainProtocols.swift */; };
 		A29CF293270453D300DDA039 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29CF292270453D300DDA039 /* MainConfigurator.swift */; };
 		A2E0320527030B2F00DB9AE7 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E0320427030B2E00DB9AE7 /* MainPresenter.swift */; };
 		A2E0320727030B3A00DB9AE7 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E0320627030B3A00DB9AE7 /* MainInteractor.swift */; };
@@ -56,6 +57,7 @@
 		80C8421526EA301500A71674 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
 		80C8421626EA301500A71674 /* SinglePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePageViewController.xib; sourceTree = "<group>"; };
 		A207D2C93E863BD5F35A1A42 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
+		A23F62D92706FFD800151F0F /* MainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
 		A29CF292270453D300DDA039 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
 		A2E0320427030B2E00DB9AE7 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A2E0320627030B3A00DB9AE7 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 		80C8420F26E8AF9700A71674 /* Conrtollers */ = {
 			isa = PBXGroup;
 			children = (
-				80C841F526E6580F00A71674 /* MainViewController.swift */,
 				80BB455526F7AA1700158A04 /* LoginViewController.swift */,
 				80C8420526E79FC900A71674 /* FilmCollectionView.swift */,
 				80C8420126E75DCA00A71674 /* CustomCellCollectionViewCell.swift */,
@@ -154,10 +155,12 @@
 		A2E0320327030B1300DB9AE7 /* ReworkMainVC */ = {
 			isa = PBXGroup;
 			children = (
+				80C841F526E6580F00A71674 /* MainViewController.swift */,
 				A2E0320427030B2E00DB9AE7 /* MainPresenter.swift */,
 				A2E0320627030B3A00DB9AE7 /* MainInteractor.swift */,
 				A2E0320827030B5200DB9AE7 /* FBProvider.swift */,
 				A29CF292270453D300DDA039 /* MainConfigurator.swift */,
+				A23F62D92706FFD800151F0F /* MainProtocols.swift */,
 			);
 			path = ReworkMainVC;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				80C841DE26E6509600A71674 /* AppDelegate.swift in Sources */,
 				80C8420626E79FC900A71674 /* FilmCollectionView.swift in Sources */,
 				80C8420326E75DCA00A71674 /* CustomCellCollectionViewCell.swift in Sources */,
+				A23F62DA2706FFD800151F0F /* MainProtocols.swift in Sources */,
 				80C8421126E8CFBA00A71674 /* Response.swift in Sources */,
 				A2E0320527030B2F00DB9AE7 /* MainPresenter.swift in Sources */,
 				80BB455A26F7BA3000158A04 /* User.swift in Sources */,
@@ -449,7 +453,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LFK66LU3C4;
+				DEVELOPMENT_TEAM = Q6458JFG8W;
 				INFOPLIST_FILE = MovieApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
